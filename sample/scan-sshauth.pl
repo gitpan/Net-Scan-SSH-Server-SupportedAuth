@@ -101,8 +101,9 @@ B<scan-sshauth.pl> - probe SSH supported authentication method
 
 =head1 SYNOPSIS
 
-B<scan-sshauth.pl> [ B<--help> ] IP_ADDRESS | CIDR
+B<scan-sshauth.pl> [ B<--help> ] HOSTNAME | IP_ADDRESS | CIDR ...
 
+  $ scan-sshauth.pl abbasak booofy cagayan diu
   $ scan-sshauth.pl 192.168.1.1
   $ scan-sshauth.pl 192.168.1.1:10022
   $ scan-sshauth.pl 192.168.1.1:10022 192.168.1.2
@@ -111,18 +112,28 @@ B<scan-sshauth.pl> [ B<--help> ] IP_ADDRESS | CIDR
 
 =head1 DESCRIPTION
 
-Examine expire date of certificate and output name and expire date if expired.
-Output format is YAML.
-
-Examinee certificate is both OK via network (HTTPS) and local file.
+probe supported SSH authentication method of specified hostname or IP address or CIDR block.
 
 =head1 OPTIONS
 
 =over 4
 
-=item B<--file> DATAFILE fixme
+=item B<--help>
 
-=item B<-f> DATAFILE
+show help.
+
+=item B<hostname>
+
+=item B<hostname:port>
+
+=item B<IP_address>
+
+=item B<IP_address:port>
+
+=item B<CIDR>
+
+=item B<CIDR:port>
+
 
 =back
 

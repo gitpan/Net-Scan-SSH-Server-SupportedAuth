@@ -14,16 +14,15 @@ auto_install;
 WriteAll;
 
 {
-    eval q( require Math::BigInt::GMP  );
-    my $has_gmp  = 1 unless $@;
-    eval q( require Math::BigInt::Pari );
-    my $has_pari = 1 unless $@;
-
-    if ($has_gmp || $has_pari) {
-        ; # OK
-    } else {
+    my @mods;
+    for my $mod (qw(Math::BigInt::GMP)) {
+        eval qq( require $mod );
+        push @mods, $mod if $@;
+    }
+    if (@mods) {
         print '  ','*'x69,"\n";
-        print "  * recommend to install Math::BigInt::GMP or Math::BigInt::Pari.\n";
+        print "  * recommend to install following module(s).\n";
+        print "  *   - $_\n" for @mods;
         print '  ','*'x69,"\n";
     }
 }
